@@ -16,10 +16,10 @@
         containing 5 --> {0} {1 2 3 4 5 6 7}
         
 ##Solution:
-    * public class UF: contains methods: union and connected
-        * UF(int N): initialize data structures based on number of objects
-        * void union(int p, int q)
-        * boolean connected()
+* public class UF: contains methods: union and connected
+    * UF(int N): initialize data structures based on number of objects
+    * void union(int p, int q)
+    * boolean connected()
 
 
 
