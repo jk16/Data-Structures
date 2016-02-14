@@ -22,7 +22,6 @@ Quick-Find
 Data Structure:
     *Integer array id[] of size N
     *Interpretation: q and q are connectd iff they have the same id
-    *Interpretation: q and q are connectd iff they have the same id
 
 id[] = [0,1,1,8,8,0,0,1,8,8]
 * 0,5,6 connected
@@ -40,3 +39,33 @@ Union --> Merge components containing p and q by changing entries whose id equal
             * [0,1,1,8,8,0,0,1,8,8] --> [1,1,1,8,8,1,1,1,8,8]
 
 */
+
+public class QuickFindUF 
+{
+    private int[] id;
+
+    //ctor: N array access
+    public QuickFindUF(int N)
+    {
+        id = new int[N];
+        for (int i=0; i<N; i++) {
+            id[i] = i;
+        }
+    }
+
+    //connected method: 2 array accesses
+    public boolean connected(int p, int q) {
+        return id[p] == id[q];
+    }
+    //union method: 2N + 2 array accesses
+    public void union(int p, int q) {
+        int pID = id[p];
+        int qID = id[q];
+        int l = id.length;
+
+        for(int i=0; i<l; i++) {
+            if(id[i] == pID)
+                id[i] = qID;
+        }
+    }
+}
