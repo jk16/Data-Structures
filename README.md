@@ -1,2 +1,2 @@
 # Data-Structures
-Various implementations for practice
+* see: https://class.coursera.org/algs4partI-010
