@@ -15,7 +15,7 @@ void union(int p, int q): root of p point to root of q
 
 */
 
-public QuickUnionUF
+public class QuickUnionUF
 {
         private int[] id;
 
