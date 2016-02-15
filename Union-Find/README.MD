@@ -20,6 +20,8 @@
     * UF(int N): initialize data structures based on number of objects
     * void union(int p, int q)
     * boolean connected(int p, int q)
+* QuickFind
+* QuickUnion
 
 
 
