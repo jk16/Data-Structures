@@ -22,6 +22,10 @@ public class Percolation {
 		
 	}
 	
+	public int coordToGridValue(int i, int j) {
+		return (N*(i-1) + (j-1));
+	}
+	
 	public void open(int i, int j) {   
 //	open site (row i, column j) if it is not open already
 //		if is not open (use isOpen method)
@@ -31,27 +35,45 @@ public class Percolation {
 		if(isNotOpen) {
 //			based on number of adjacent Nodes, use union those adj nodes
 			if(adjNodes.equals(new String("right"))) {
+				//left Node
+				grid.union(coordToGridValue(i,j), coordToGridValue(i,j-1));
 				if(i<N){
-					grid.union(i, j-1);
-					grid.union(i+i, j);
+					grid.union(coordToGridValue(i,j), coordToGridValue(i+1,j));
 				}
-				else
-					grid.union(i, j-1);
+				else if(i==N)
+					grid.union(coordToGridValue(i,j) , coordToGridValue(i-1,j));
 			}
+			
 			else if(adjNodes.equals(new String("left"))) {
+				//right Node
+				grid.union(coordToGridValue(i,j), coordToGridValue(i,j+1));
 				if (i<N) {
-					grid.union(i, j+1);
-					grid.union(i+1, j);
+					grid.union(coordToGridValue(i,j), coordToGridValue(i+1,j));
 				}
-				else
-					grid.union(i, j+1);
+				else if(i==N){
+					grid.union(coordToGridValue(i,j), coordToGridValue(i-1,j));
+				}
 			}
 			else {
-				if(i<N){
-					grid.union(i, j+1);
-					grid.union(i, j-1);
-					grid.union(i+1, j);
+				//right
+				grid.union(coordToGridValue(i,j) , coordToGridValue(i,j+1));
+				//left
+				grid.union(coordToGridValue(i,j) , coordToGridValue(i,j-1));
+				
+				if(i==1) {
+					grid.union(coordToGridValue(i,j) , coordToGridValue(i+1,j));
 				}
+				
+				if(i==N) {
+					grid.union(coordToGridValue(i,j) , coordToGridValue(i-1,j));
+				}
+				
+				if(i>1 && i<N)  {
+					grid.union(coordToGridValue(i,j) , coordToGridValue(i+1,j));
+					grid.union(coordToGridValue(i,j) , coordToGridValue(i-1,j));
+				}
+				
+				
 			}
 			
 		}
@@ -124,6 +146,7 @@ public class Percolation {
 		// TODO Auto-generated method stub
 		Percolation p = new Percolation(5); //go from (0,N-1) N: Top, N+1 will be bottom
 		WeightedQuickUnionUF g = p.getGrid();
+		g.union(4,0);
 		System.out.println(g.connected(0, 4));
 	}
 
