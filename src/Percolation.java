@@ -89,23 +89,62 @@ public class Percolation {
 		
 //		getAdjNodes
 		String adjNodes = getAdjNodes(j);
-		
 		if(adjNodes.equals(new String("right"))) {
-			if(i<N)
-				return (grid.connected(i, j-1) && grid.connected(i+i, j));
-			else
-				return (grid.connected(i, j-1));
+			if(i==1){
+				return 
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i+1,j)) && 
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i,j-1));
+			}
+			if(i==N) {
+				return 
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i-1,j)) &&
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i,j-1));
+			}
+			if(i>1 && i<N) {
+				return
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i,j-1)) &&
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i+1,j)) &&
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i-1,j));
+				}
+			
 		}
+		
 		else if(adjNodes.equals(new String("left"))) {
-			if (i<N)
-				return (grid.connected(i, j+1) && grid.connected(i+1, j));
-			else
-				return (grid.connected(i, j+1));
+			if (i<N) {
+				return
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i+1,j)) && 
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i,j+1));
+			}
+			else if(i==N){
+				return
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i-1,j)) &&
+						grid.connected(coordToGridValue(i,j), coordToGridValue(i,j+1));
+			}
 		}
 		else {
-			if(i<N)
-				return (grid.connected(i, j+1) && grid.connected(i, j-1) && grid.connected(i+1, j));
+			if(i==1) {
+				return
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j+1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j-1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i+1,j));
+			}
+			if(i==N) {
+				return
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j+1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j-1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i-1,j));
+			}
+			if(i>1 && i<N) {
+				return 
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j+1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i,j-1)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i-1,j)) &&
+						grid.connected(coordToGridValue(i,j) , coordToGridValue(i+1,j));
+						
+			}
+		
 		}
+		
 		return false;
 	}
 	
