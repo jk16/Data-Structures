@@ -34,10 +34,24 @@ public class Percolation {
 		// is site (row i, column j) open?
 		
 //		getAdjNodes
-		List<Integer> adjNodes = getAdj
-//		for each adjNode
-//			if node is connected to all nodes 
-//				return true
+		String adjNodes = getAdjNodes(j);
+		
+		if(adjNodes.equals(new String("right"))) {
+			if(i<N)
+				return (grid.connected(i, j-1) && grid.connected(i+i, j));
+			else
+				return (grid.connected(i, j-1));
+		}
+		else if(adjNodes.equals(new String("left"))) {
+			if (i<N)
+				return (grid.connected(i, j+1) && grid.connected(i+1, j));
+			else
+				return (grid.connected(i, j+1));
+		}
+		else {
+			if(i<N)
+				return (grid.connected(i, j+1) && grid.connected(i, j-1) && grid.connected(i+1, j));
+		}
 		return false;
 	}
 	
@@ -47,7 +61,7 @@ public class Percolation {
 		return grid.connected(vTop, vBot);
 	} 
 	
-	public String getAdjNodes(int row, int col) {
+	public String getAdjNodes(int col) {
 		String typeOfCoord = null;
 		
 //		if node if on extreme left ie (something,1)
