@@ -24,6 +24,11 @@ public class Percolation {
 	public boolean isOpen(int i, int j) {
 		// is site (row i, column j) open?
 		
+//		getAdjNodes
+//		for each adjNode
+//			if node is connected to all nodes 
+//				return true
+		return false;
 	}
 	
 	public List<Integer> getAdjNodes(int cNode) {
