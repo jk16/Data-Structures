@@ -25,10 +25,42 @@ public class Percolation {
 	public void open(int i, int j) {   
 //	open site (row i, column j) if it is not open already
 //		if is not open (use isOpen method)
-//			determine how many adjacent nodes it has
+		boolean isNotOpen = !isOpen(i,j);
+//		determine how many adjacent nodes it has
+		String adjNodes = getAdjNodes(j);
+		if(isNotOpen) {
 //			based on number of adjacent Nodes, use union those adj nodes
+			if(adjNodes.equals(new String("right"))) {
+				if(i<N){
+					grid.union(i, j-1);
+					grid.union(i+i, j);
+				}
+				else
+					grid.union(i, j-1);
+			}
+			else if(adjNodes.equals(new String("left"))) {
+				if (i<N) {
+					grid.union(i, j+1);
+					grid.union(i+1, j);
+				}
+				else
+					grid.union(i, j+1);
+			}
+			else {
+				if(i<N){
+					grid.union(i, j+1);
+					grid.union(i, j-1);
+					grid.union(i+1, j);
+				}
+			}
+			
+		}
+			
+
+
 //	    else return
 	}
+	
 	
 	public boolean isOpen(int i, int j) {
 		// is site (row i, column j) open?
