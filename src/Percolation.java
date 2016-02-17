@@ -34,6 +34,7 @@ public class Percolation {
 		// is site (row i, column j) open?
 		
 //		getAdjNodes
+		List<Integer> adjNodes = getAdj
 //		for each adjNode
 //			if node is connected to all nodes 
 //				return true
@@ -43,36 +44,25 @@ public class Percolation {
 	public boolean isFull(int i, int j) {
 		// is site (row i, column j) full?
 		//the site is full when virtual nodes are connected
-		return false;
+		return grid.connected(vTop, vBot);
 	} 
 	
-	public List<Integer> getAdjNodes(int cNode) {
-		List<Integer> adjNodes = new ArrayList<Integer>();
-		int right;
-		int	left;
-		int	bot;
+	public String getAdjNodes(int row, int col) {
+		String typeOfCoord = null;
 		
-//		if node if on extreme left
-		if(cNode%N == 0) {
-			right = N+1;
-			bot = cNode + N ;
-			adjNodes.add(right);
-			adjNodes.add(bot);
+//		if node if on extreme left ie (something,1)
+		if(col == 1) {
+			typeOfCoord = new String("left");
 		}
 //		else if node on extreme right
-		else if ((cNode+1)%N == 0) {
-			left = N-1;
-			bot = cNode + N;
-			adjNodes.add(left);
-			adjNodes.add(bot);
+		else if (col == N ) {
+			typeOfCoord = new String("right");
 		}
 //		else node is not an extreme
 		else {
-			right = N+1;
-			left = N-1;
-			bot = cNode + N;
+			typeOfCoord = new String("center");
 		}
-		return adjNodes;
+		return typeOfCoord;
 			
 	}
 	
