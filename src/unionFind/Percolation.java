@@ -7,9 +7,24 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
 	private WeightedQuickUnionUF grid;
 	public static int N;
-	public Percolation(int N)
+	int vTop, vBot;
+	public Percolation(int n)
 	{	
-		grid = new WeightedQuickUnionUF(N*N);	
+		N = n;
+		vTop = N+1;
+		vBot = N+2;
+		grid = new WeightedQuickUnionUF((N+1) * (N+1));
+		//all nodes in the first row connected to last Node of first row
+		for(int i=0;i<N; i++) {
+//			System.out.println(i + "  " + (N+1));
+			grid.union(i, vTop);//N=3: {0,4},{1,4}, {2,4}
+			
+			
+//			System.out.println(coordToGridValue(vBot,i+1) +"  " + ( (N+1)*(N+1) - 1   ) );
+			
+			grid.union(coordToGridValue(vBot,i+1), ( (N+1)*(N+1) - 1   ) ); //N=3: {12,15},{13,15}, {14,15}
+		}
+		
 	}
 	
 	public int coordToGridValue(int i, int j) {
@@ -155,7 +170,7 @@ public class Percolation {
 		// is site (row i, column j) full?
 		//the site is full when virtual nodes are connected
 		System.out.println("perculates: " + grid.connected(0, N*N));
-		return grid.connected(0, N*N);
+		return grid.connected(vTop, vBot);
 	} 
 	
 	public String getAdjNodes(int col) {
@@ -189,6 +204,7 @@ public class Percolation {
 		// TODO Auto-generated method stub
 		int N = 3;
 		Percolation p = new Percolation(N); //go from (0,N-1) N: Top, N+1 will be bottom
+		/*
 		WeightedQuickUnionUF g = p.getGrid();
 		int i,j;
 		System.out.println(p.getN());
@@ -206,11 +222,7 @@ public class Percolation {
 			}
 		}
 		System.out.println(c);
-		
-	}
-	
-	public void testIsOpen() {
-		
+		*/
 	}
 
 }
