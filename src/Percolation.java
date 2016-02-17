@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
@@ -86,7 +85,6 @@ public class Percolation {
 	
 	public boolean isOpen(int i, int j) {
 		// is site (row i, column j) open?
-		
 //		getAdjNodes
 		String adjNodes = getAdjNodes(j);
 		if(adjNodes.equals(new String("right"))) {
@@ -148,9 +146,10 @@ public class Percolation {
 		return false;
 	}
 	
-	public boolean isFull(int i, int j) {
+	public boolean percolates() {
 		// is site (row i, column j) full?
 		//the site is full when virtual nodes are connected
+		System.out.println("perculates!");
 		return grid.connected(vTop, vBot);
 	} 
 	
@@ -183,10 +182,19 @@ public class Percolation {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Percolation p = new Percolation(5); //go from (0,N-1) N: Top, N+1 will be bottom
+		Percolation p = new Percolation(3); //go from (0,N-1) N: Top, N+1 will be bottom
 		WeightedQuickUnionUF g = p.getGrid();
-		g.union(4,0);
-		System.out.println(g.connected(0, 4));
+		int i,j;
+		
+		Random rand = new Random();
+//		Repeat the following until the system percolates:
+		while (!p.percolates()) {
+//			Choose a site (row i, column j) uniformly at random among all blocked sites.
+			i = rand.nextInt(p.getN()*p.getN());
+			j = rand.nextInt(p.getN()*p.getN());
+//			Open the site (row i, column j).
+			p.open(i, j);
+		}
 	}
 
 }
