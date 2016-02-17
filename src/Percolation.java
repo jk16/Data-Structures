@@ -23,7 +23,7 @@ public class Percolation {
 	
 	public boolean isOpen(int i, int j) {
 		// is site (row i, column j) open?
-		return true;
+		
 	}
 	
 	public List<Integer> getAdjNodes(int cNode) {
