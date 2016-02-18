@@ -6,6 +6,8 @@ public class ArrayQueueOfStrings {
 	
 	public ArrayQueueOfStrings(int capacity) 
 	{
+		tail = 0;
+		head = 0;
 		q = new String[1];
 	}
 	
