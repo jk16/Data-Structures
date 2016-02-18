@@ -25,4 +25,16 @@
 * pop: remove from s[n-1]
 * Defect: Initialize the size of array limits the capacity
 * Problem: Most of the time client doesnt know size of the stack, how do you grow and shrink an array?
+
+###QueueOfStrings API
+* ctor: create empty queue
+* enqueue: insert new string
+* dequeue: remove and return most recently added
+* isEmpty: is the queue empty?
+
+####First Implementation
+* using a LL keep a pointer to the first and last nodes
+* insert at the end of the LL
+* remove from the front of the LL
+
 	
