@@ -18,4 +18,11 @@
 * push: insert new node at the beginning of the LL
 * pop: remove the first node from the front 
 
+####Second implementation
+* Use an array
+* Keep n-items on a stack
+* push: add new item at s[n]
+* pop: remove from s[n-1]
+* Defect: Initialize the size of array limits the capacity
+* Problem: Most of the time client doesnt know size of the stack, how do you grow and shrink an array?
 	
