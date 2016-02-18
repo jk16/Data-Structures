@@ -6,9 +6,10 @@
 			* push (insert)/pop (remove)
 		* queue --> removes least recently added ("first in first out")
 			* enqueue (insert)/dequeue(remove)
+
 ###StackOfStrings API:
 	* ctor initialize empty stack
-	* push: inert string onto stack
+	* push: insert string onto stack
 	* pop: remove and return string most recently added
 	* isEmpty: is the stack empty?
 	####First implementation: Keep a linked link consisting of nodes that have strings in them
