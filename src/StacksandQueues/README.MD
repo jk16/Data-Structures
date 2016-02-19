@@ -36,6 +36,7 @@
 * using a LL keep a pointer to the first and last nodes
 * insert at the end of the LL
 * remove from the front of the LL
+
 ####Second Implementation
 * using an array
 	* tail --> oldest added
