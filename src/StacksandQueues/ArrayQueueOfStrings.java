@@ -49,7 +49,23 @@ public class ArrayQueueOfStrings {
 	}
 	
 	public String dequeue() {
-		return "hi";
+		if(N==q.length/2)
+			shrink(q.length/2);
+		head = q.length - N;
+		tail = q.length - 1;
+		String removed = q[head];
+		q[head] = null;
+		N-=1;
+		return removed;
+		
+	}
+	
+	public void shrink(int c) {
+		String[] copy = new String[c];
+		for(int i=N;i>0; --i) {
+			copy[N-i] = q[q.length -i];
+		}
+		q = copy;
 	}
 	
 	public void printQueue() {
@@ -64,7 +80,10 @@ public class ArrayQueueOfStrings {
 		a.enqueue("3");
 //		a.printQueue();
 		a.enqueue("4");
-		a.enqueue("5");
+//		a.enqueue("5");
+		a.dequeue();
+		a.dequeue();
+//		a.dequeue();
 		a.printQueue();
 	}
 	
